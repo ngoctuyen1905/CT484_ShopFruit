@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:myshop/ui/cart/cart_screen.dart';
 import 'package:myshop/ui/products/products_manager.dart';
 import 'package:provider/provider.dart';
 
-import '../products/products_grid.dart';
 import '../shared/app_drawer.dart';
 
 import '../cart/cart_manager.dart';
@@ -41,21 +39,38 @@ class _IntroduceScreenState extends State<IntroduceScreen> {
         ],
       ),
       backgroundColor: Colors.lightGreen[100],
+
       drawer: const AppDrawer(),
       body: ListView(
         children: [
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: const Text(
+              'TYTY shop Hello !!!',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.w900,
+                fontSize: 30.0,
+                fontFamily: "DancingScript",
+                color: Colors.orange,
+              ),
+            ),
+          ),
+
           CarouselSlider(
             items: [
-
               //1st Image of Slider
               Container(
                 margin: EdgeInsets.all(6.0),
+                height: 100,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   image: DecorationImage(
-                    image: NetworkImage("https://dalatfarm.net/wp-content/uploads/2022/04/phuc-bon-tu-den-2.jpg"),
+                    image: NetworkImage("https://noithatmienbac.vn/images/image/kienthuc/bo-tri-he-thong-den-chieu-sang-hop-ly.jpg"),
                     fit: BoxFit.cover,
+
                   ),
+
                 ),
               ),
 
@@ -65,7 +80,7 @@ class _IntroduceScreenState extends State<IntroduceScreen> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   image: DecorationImage(
-                    image: NetworkImage("https://st1.foodsd.co.il/Images/Products/large/TENeKydcuHqGVM4e.jpg"),
+                    image: NetworkImage("https://nhadepdecors.com/wp-content/uploads/2022/03/thiet-ke-cua-hang-trai-cay-2.jpg"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -77,7 +92,7 @@ class _IntroduceScreenState extends State<IntroduceScreen> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   image: DecorationImage(
-                    image: NetworkImage("https://st1.foodsd.co.il/Images/Products/large/TENeKydcuHqGVM4e.jpg"),
+                    image: NetworkImage("https://conbuom.vn/wp-content/uploads/2021/01/mau-thiet-ke-shop-dep7.jpg"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -89,7 +104,7 @@ class _IntroduceScreenState extends State<IntroduceScreen> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   image: DecorationImage(
-                    image: NetworkImage("ADD IMAGE URL HERE"),
+                    image: NetworkImage("https://st1.foodsd.co.il/Images/Products/large/TENeKydcuHqGVM4e.jpg"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -101,7 +116,7 @@ class _IntroduceScreenState extends State<IntroduceScreen> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   image: DecorationImage(
-                    image: NetworkImage("ADD IMAGE URL HERE"),
+                    image: NetworkImage("https://namphuthai.vn/wp-content/uploads/2017/07/mua-hoa-qua-nhap-khau-cover.jpg"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -111,7 +126,7 @@ class _IntroduceScreenState extends State<IntroduceScreen> {
 
             //Slider Container properties
             options: CarouselOptions(
-              height: 180.0,
+              height: 280.0,
               enlargeCenterPage: true,
               autoPlay: true,
               aspectRatio: 16 / 9,
@@ -121,25 +136,26 @@ class _IntroduceScreenState extends State<IntroduceScreen> {
               viewportFraction: 0.8,
             ),
           ),
+
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: const Text(
+                  "TYTY clean fruit specializes in providing three regions of Vietnam's specialty fruits, which are famous throughout the country."
+
+                      "In addition, TYTY Clean Fruit also provides imported fruits with clear origin from Australia, USA, New Zealand, South Africa..."
+
+                      "Clean Fruit TYTY is committed to providing customers only with high quality products with the most attentive service.",
+                style: TextStyle(
+
+                fontWeight: FontWeight.w600,
+                fontSize: 20.0,
+                fontFamily: "DancingScript",
+                color: Colors.black,
+              ),
+              ),
+          ),
         ],
       ),
-      // body: FutureBuilder(
-      //   future: _fetchProducts,
-      //   builder: (context, snapshot) {
-      //     if (snapshot.connectionState == ConnectionState.done) {
-      //       // return ValueListenableBuilder<bool>(
-      //       //     valueListenable: _showOnlyFavorites,
-      //       //     // ignore: non_constant_identifier_names
-      //       //     builder: (context, onlyFavorites, child) {
-      //       //       return ProductsGrid(onlyFavorites);
-      //       //     });
-      //     }
-      //     return const Center(
-      //       child: CircularProgressIndicator(),
-      //     );
-      //   },
-      // ),
-
     );
   }
 
@@ -164,11 +180,6 @@ class _IntroduceScreenState extends State<IntroduceScreen> {
   Widget buildProductFilterMenu() {
     return PopupMenuButton(
       onSelected: (FilterOptions selectedValue) {
-        /* if (selectedValue == FilterOptions.favorites) {
-          _showOnlyFavorites.value = true;
-        } else {
-          _showOnlyFavorites.value = false;
-        } */
         setState(() {
           if (selectedValue == FilterOptions.favorites) {
             _showOnlyFavorites.value = true;
